@@ -1,11 +1,12 @@
 "use client"
+import Loader from '@/components/admin-apnel/Loader';
 import Login from '@/components/admin-apnel/Login';
 import Sidebar from '@/components/admin-apnel/Sidebar';
 import { useAppSelector } from '@/redux/hooks';
 import { useSession } from 'next-auth/react';
 import React from 'react'
 
-const layout = ({children}: {children: React.ReactNode}) => {
+const Layout = ({children}: {children: React.ReactNode}) => {
   const isLoading = useAppSelector((store) => store.LoadingReducer)
   const { data: session } = useSession();
 
@@ -25,4 +26,4 @@ const layout = ({children}: {children: React.ReactNode}) => {
   );
 };
 
-export default layout
+export default Layout;
