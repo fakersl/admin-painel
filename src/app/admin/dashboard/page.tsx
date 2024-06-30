@@ -1,5 +1,6 @@
 "use client";
-import ProdutoRow from "@/components/admin-apnel/ProdutoRow";
+import Popup from "@/components/admin-panel/Popup";
+import ProdutoRow from "@/components/admin-panel/ProdutoRow";
 import { setLoading } from "@/redux/features/loadingSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import axios from "axios";
@@ -41,11 +42,11 @@ const Dashboard = () => {
                     <table className="w-full">
                         <thead>
                             <tr className="text-gray-500 border-t border-[#ececec]">
-                                <th>blabla</th>
-                                <th>blabla</th>
-                                <th>blabla</th>
-                                <th>blabla</th>
-                                <th>blabla</th>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Produto</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,9 +63,9 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* { openPopup && (
+            { openPopup && (
                 <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
-            )} */}
+            )}
         </div>
     );
 };
