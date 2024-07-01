@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import { withUt } from "uploadthing/tw";
 
-const config: Config = {
+const config = withUt({
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,13 +13,6 @@ const config: Config = {
         topHeadingPrimary: "#06011c",
         topHeadingSecondary: "#0c0235",
         pink: "#604bfd", // Cor Rosa
-
-        // pink: "#DD91F2" --> Cor Rosa
-        // pink: "#559BD9" --> Cor Azul
-        // pink: "#63F295" --> Cor Verde
-        // pink: "#D9BA5F" --> Cor Amarela
-        // pink: "#F26938" --> Cor Laranja
-        // pink: "#604bfd" --> Cor Roxa
       },
 
       container: {
@@ -29,5 +22,6 @@ const config: Config = {
     },
   },
   plugins: [],
-};
+});
+
 export default config;

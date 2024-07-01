@@ -16,8 +16,7 @@ export interface IProduct {
 }
 
 const Dashboard = () => {
-
-    const [produtos, setProdutos] = useState<IProduct[]>([]);
+    const [products, setProducts] = useState<IProduct[]>([]); // Definindo o tipo de products como IProduct[]
     const [openPopup, setOpenPopup] = useState(false);
     const [updateTable, setUpdateTable] = useState(false);
 
@@ -28,8 +27,8 @@ const Dashboard = () => {
 
         axios
             .get("/api/get_products")
-            .then((res) => setProdutos(res.data))
-            .catch(err => console.log(err))
+            .then((res) => setProducts(res.data))
+            .catch((err) => console.log(err))
             .finally(() => dispatch(setLoading(false)));
     }, [updateTable, dispatch]);
 
@@ -50,20 +49,21 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {produtos.map((produto, index) => (
+                            {products.map((produto, index) => (
                                 <ProdutoRow
                                     key={produto._id}
                                     srNo={index + 1}
                                     setOpenPopup={setOpenPopup}
                                     setUpdateTable={setUpdateTable}
-                                    produto={produto} />
+                                    produto={produto}
+                                />
                             ))}
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            { openPopup && (
+            {openPopup && (
                 <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
             )}
         </div>

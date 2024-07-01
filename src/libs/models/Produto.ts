@@ -1,6 +1,6 @@
 import { Schema, model, models} from "mongoose";
 
-const produtoSchema = new Schema({
+const productSchema = new Schema({
     imgSrc: {
         type: String,
         require: true,
@@ -23,6 +23,6 @@ const produtoSchema = new Schema({
     },
 });
 
-const Produto = models.Produto || model("Produto", produtoSchema);
+const Product = models.Product || model("Product", productSchema);
 
-export default Produto;
+export default Product;
