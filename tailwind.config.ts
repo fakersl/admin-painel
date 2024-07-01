@@ -1,3 +1,4 @@
+// tailwind.config.js
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -13,21 +14,15 @@ const config: Config = {
         topHeadingPrimary: "#06011c",
         topHeadingSecondary: "#0c0235",
         pink: "#604bfd", // Cor Rosa
-
-        // pink: "#DD91F2" --> Cor Rosa
-        // pink: "#559BD9" --> Cor Azul
-        // pink: "#63F295" --> Cor Verde
-        // pink: "#D9BA5F" --> Cor Amarela
-        // pink: "#F26938" --> Cor Laranja
-        // pink: "#604bfd" --> Cor Roxa
+        // Outras cores podem ser adicionadas aqui conforme necessário
       },
-
       container: {
-        center: true,
+        center: true,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         padding: "15px",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
