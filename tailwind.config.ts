@@ -1,3 +1,4 @@
+// tailwind.config.js
 import { withUt } from "uploadthing/tw";
 
 const config = withUt({
@@ -13,8 +14,8 @@ const config = withUt({
         topHeadingPrimary: "#06011c",
         topHeadingSecondary: "#0c0235",
         pink: "#604bfd", // Cor Rosa
+        // Outras cores podem ser adicionadas aqui conforme necessário
       },
-
       container: {
         center: true,
         padding: "15px",
