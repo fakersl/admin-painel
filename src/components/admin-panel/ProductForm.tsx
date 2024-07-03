@@ -2,7 +2,7 @@
 import { setLoading } from '@/redux/features/loadingSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { makeToast } from '@/utils/helper';
-import { UploadButton } from '@/utils/uploadthings';
+import { UploadButton } from '@/utils/uploadthings'; // Certifique-se de que este é o caminho correto
 import axios from 'axios';
 import Image from 'next/image';
 import React, { FormEvent, useState } from "react";
@@ -63,8 +63,8 @@ const ProductForm = () => {
                     console.log(res);
                     setPayload({
                         ...payload,
-                        imgSrc: res[0]?.url,
-                        fileKey: res[0]?.key,
+                        imgSrc: res[0]?.url || null,
+                        fileKey: res[0]?.key || null,
                     });
                 }}
                 onUploadError={(error: Error) => {
