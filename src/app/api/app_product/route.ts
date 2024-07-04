@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
             imgSrc, fileKey, nome, categoria, preco
         });
 
-        return NextResponse.json({msg: "✔ | Produto criado com sucesso", data});
+        return NextResponse.json({msg: "Produto criado com sucesso", data});
     } catch (error) {
         return NextResponse.json({
             error,

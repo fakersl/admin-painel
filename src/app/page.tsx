@@ -1,7 +1,15 @@
-import Image from "next/image";
+"use client";
+import Cart from "@/components/front-end/Cart";
+import Navbar from "@/components/front-end/Navbar";
+import React, { useState } from "react";
 
-export default function Home() {
-  return (
-    <main>teste</main>
-  );
-}
+const Home = () => {
+  const [showCart, setShowCart] = useState(false);
+
+  return <main>
+    <Navbar setShowCart={setShowCart} />
+    <Cart setShowCart={setShowCart} />
+  </main>
+};
+
+export default Home;

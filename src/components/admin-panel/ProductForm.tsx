@@ -105,7 +105,7 @@ const ProductForm = () => {
                 />
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-end">
                 <button className="bg-pink text-white px-8 py-2 rounded-md">Adicionar</button>
             </div>
         </form>

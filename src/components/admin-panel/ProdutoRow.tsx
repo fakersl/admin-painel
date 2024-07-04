@@ -1,20 +1,29 @@
-import { IProduct } from "@/app/admin/dashboard/page";
-import productSlice, { setProduct } from "@/redux/features/productSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
+
+import Image from "next/image";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { IProduct } from "@/app/admin/dashboard/page";
+import { useAppDispatch } from "@/redux/hooks";
+import { setProduct } from "@/redux/features/productSlice";
+import axios from "axios";
+import { setLoading } from "@/redux/features/loadingSlice";
+import { makeToast } from "@/utils/helper";
 
 interface PropsType {
     srNo: number;
-    setOpenPopup: Dispatch<SetStateAction<boolean>>
-    setUpdateTable: Dispatch<SetStateAction<boolean>>
-    produto: IProduct
+    setOpenPopup: Dispatch<SetStateAction<boolean>>;
+    setUpdateTable: Dispatch<SetStateAction<boolean>>;
+    produto: IProduct;
 }
 
-const ProdutoRow = ({ srNo, setOpenPopup, setUpdateTable, produto }: PropsType) => {
-
-    const dispatch = useAppDispatch()
+const ProdutoRow = ({
+    srNo,
+    setOpenPopup,
+    setUpdateTable,
+    produto,
+}: PropsType) => {
+    const dispatch = useAppDispatch();
 
     const onEdit = () => {
         dispatch(setProduct(produto));
@@ -22,8 +31,30 @@ const ProdutoRow = ({ srNo, setOpenPopup, setUpdateTable, produto }: PropsType) 
     }
 
     const onDelete = () => {
-        /* dps faco preguiça tmnc */
-    }
+        dispatch(setLoading(true));
+
+        const payload = {
+            fileKey: produto.fileKey,
+        };
+
+        axios
+            .delete("/api/uploadthing", { data: payload })
+            .then((res) => {
+                console.log(res);
+
+                axios
+                    .delete(`/api/delete_product/${produto._id}`)
+                    .then((res) => {
+                        console.log(res);
+                        makeToast("Produto deletado com sucesso!");
+                        setUpdateTable((prevState) => !prevState);
+                    })
+                    .catch((err) => console.error(err))
+                    .finally(() => dispatch(setLoading(false)));
+            })
+            .catch((err) => console.log(err));
+
+    };
 
     return (
         <tr>
@@ -36,7 +67,7 @@ const ProdutoRow = ({ srNo, setOpenPopup, setUpdateTable, produto }: PropsType) 
             <td>$ {produto.preco}</td>
             <td className="py-2">
                 <img
-                    src={produto.nome}
+                    src={produto.imgSrc}
                     width={40}
                     height={40}
                     alt="product_image"
@@ -58,4 +89,4 @@ const ProdutoRow = ({ srNo, setOpenPopup, setUpdateTable, produto }: PropsType) 
     );
 };
 
-export default ProdutoRow
+export default ProdutoRow;
