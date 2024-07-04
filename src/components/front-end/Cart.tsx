@@ -12,13 +12,13 @@ const Cart = ({ setShowCart }: PropsType) => {
 
     const getTotal = () => {
         let total = 0;
-        products.forEach((items) => (total = total + items.preco * items.quantidade));
+        products.forEach((item) => (total = total + item.preco * item.quantidade));
         return total;
     };
 
     return (
         <div className="bg-[#0000007d] w-full min-h-screen fixed left-0 top-0 z-20 overflow-y-scroll">
-            <div className="max-w-[400px] w-full min-h-full bg-white absolute right-0 top-0 p-6">
+            <div className="max-w-[90vw] md:max-w-[400px] w-full min-h-full bg-white absolute right-0 top-0 p-6">
                 <RxCross1
                     className="absolute right-0 top-0 m-6 text-[24px] cursor-pointer"
                     onClick={() => setShowCart(false)}
@@ -27,7 +27,7 @@ const Cart = ({ setShowCart }: PropsType) => {
                     Seu Carrinho
                 </h3>
 
-                <div className="mt-6 space-y-2">
+                <div className="mt-6 space-y-4">
                     {products.map((item: any) => (
                         <CartProduct
                             key={item.id}
@@ -41,15 +41,15 @@ const Cart = ({ setShowCart }: PropsType) => {
                 </div>
 
                 <div className="flex justify-between items-center font-medium text-xl py-4">
-                    <p>Total: </p>
-                    <p>R${getTotal()}.00</p>
+                    <p>Total:</p>
+                    <p className="text-green-600">R${getTotal()}.00</p>
                 </div>
 
-                <button className="bg-black text-white text-center w-full rounded-3xl py-2 hover:bg-accent mb-4 mt-4">
+                <button className="bg-black text-white text-center w-full rounded-full py-3 hover:bg-accent mb-4">
                     Ver Carrinho
                 </button>
-                <button className="bg-black text-white text-center w-full rounded-3xl py-2 hover:bg-accent">
-                    Checkout
+                <button className="bg-black text-white text-center w-full rounded-full py-3 hover:bg-accent">
+                    Realizar Pagamento
                 </button>
             </div>
         </div>
