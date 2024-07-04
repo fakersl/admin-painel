@@ -6,10 +6,12 @@ import React, { useState } from "react";
 const Home = () => {
   const [showCart, setShowCart] = useState(false);
 
-  return <main>
-    <Navbar setShowCart={setShowCart} />
-    <Cart setShowCart={setShowCart} />
-  </main>
+  return (
+    <main>
+      <Navbar setShowCart={setShowCart} />
+      {showCart && <Cart setShowCart={setShowCart} />}
+    </main>
+  );
 };
 
 export default Home;
