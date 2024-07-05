@@ -16,12 +16,11 @@ const Navbar = ({ setShowCart }: PropsType) => {
                     <div className="text-2xl font-bold">Logo</div>
                     <div className="hidden lg:flex w-full max-w-md mx-4">
                         <input
-                            className="border-2 border-accent px-4 py-2 w-full rounded-l-lg focus:outline-none"
+                            className="border-2 hover:border-accent border-black px-4 py-2 w-full rounded-l-lg focus:outline-none"
                             type="text"
                             placeholder="Pesquisar..."
                         />
-
-                        <button className="bg-accent text-white px-4 rounded-r-lg">
+                        <button className="hover:bg-accent bg-black text-white px-4 rounded-r-lg">
                             <BsSearch className="text-2xl" />
                         </button>
                     </div>
